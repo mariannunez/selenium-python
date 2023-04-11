@@ -18,8 +18,8 @@ def create_driver(request):
     if ci_execution:
         opts.add_argument('--headless')
         opts.add_argument('--no-sandbox')
-        opts.addArguments("--window-size=1920,1080")
-        opts.addArguments("--start-maximized")
+        opts.add_argument('--window-size=1920,1080')
+        opts.add_argument('--start-maximized')
     opts.page_load_strategy = 'normal'
     chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.GOOGLE).install())
     request.cls.driver = webdriver.Chrome(service=chrome_service, options=opts)
