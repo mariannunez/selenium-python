@@ -10,8 +10,12 @@ import os
 @pytest.fixture()
 def create_driver(request):
     opts = Options()
+    try:
+        ci_execution = os.environ['CI_EXECUTION']
+    except KeyError:
+        ci_execution = False
 
-    if os.environ.get('CI_EXECUTION', False):
+    if ci_execution:
         opts.add_argument('--headless')
         opts.add_argument('--no-sandbox')
     opts.page_load_strategy = 'normal'
