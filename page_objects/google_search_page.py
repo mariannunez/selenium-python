@@ -20,12 +20,14 @@ class GoogleSearchPage(BasePage):
         self.enter_text(By.NAME, "q", value)
         self.click(By.CSS_SELECTOR, "[role='listbox'] li")
 
-    def get_temp(self, expected_unit='°Celsius'):
+    def get_temp(self, expected_unit='°Fahrenheit'):
         unit_button = "//div[@class='vk_bk wob-unit']/a[contains(@style,'display:')]"
+        temp_value = "wob_tm"
         unit = self.get_attribute_value(By.XPATH, f'{unit_button}/span', "aria-label")
+        temp = self.get_element_text(By.ID, temp_value)
         if unit != expected_unit:
             self.force_click(By.XPATH, unit_button)
+            temp_value = "wob_ttm"
+            temp = self.get_element_text(By.ID, temp_value)
         unit = self.get_attribute_value(By.XPATH, f'{unit_button}/span', "aria-label")
-        temp_value = "wob_ttm" if expected_unit == '°Fahrenheit' else "wob_tm"
-        temp = self.get_element_text(By.ID, temp_value)
         return WeatherData(temp, unit)
