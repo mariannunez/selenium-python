@@ -1,19 +1,18 @@
 from utils.base_driver import create_driver, close_driver, open
 from page_objects.google_search_page import GoogleSearchPage
 from api.open_weathermap_api import OpenWeatherMapAPI
-import math
+import pytest
 
 
 class TestClass:
+    @pytest.mark.usefixtures("create_driver")
     def test_weather_services(self):
-        # create an driver instance
-        driver = create_driver()
 
         # Go to the google page
-        open(driver, 'https://www.google.com/')
+        open(self.driver, 'https://www.google.com/')
 
         # Search weather in an specific location
-        google_search_page = GoogleSearchPage(driver)
+        google_search_page = GoogleSearchPage(self.driver)
         google_search_page.search("Weather in San Francisco, California")
 
         # Search weather in an specific location by API
