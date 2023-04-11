@@ -12,6 +12,8 @@ def create_driver(request):
     opts = Options()
 
     opts.add_argument('--headless')
+    opts.add_argument('--no-sandbox')
+
     #if os.environ.get('CI_EXECUTION', False):
     #    opts.add_argument('--headless')
     opts.page_load_strategy = 'normal'
