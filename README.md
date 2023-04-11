@@ -1,3 +1,6 @@
+Suite that obtains the temperature of a certain location of different services and compares them. 
+Use Selenium, Python and Pytest as runner
+
 # Set up environment
 
 Create and activate a virtual env [Python Doc](https://docs.python.org/es/3/library/venv.html).
@@ -6,7 +9,7 @@ Create and activate a virtual env [Python Doc](https://docs.python.org/es/3/libr
 
 You will need the **environment activated**
 
-- Run `pip install`
+- Run `pip install requirements.txt`
 
 ## Execute the tests
 
