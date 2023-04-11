@@ -16,7 +16,7 @@ on:
         default: 'tests/'
 
 jobs:
-  deploy:
+  test_execution:
 
     runs-on: ubuntu-latest
 
