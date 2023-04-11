@@ -10,8 +10,10 @@ import os
 @pytest.fixture()
 def create_driver(request):
     opts = Options()
-    if os.environ.get('CI_EXECUTION', False):
-        opts.add_argument('--headless')
+
+    opts.add_argument('--headless')
+    #if os.environ.get('CI_EXECUTION', False):
+    #    opts.add_argument('--headless')
     opts.page_load_strategy = 'normal'
     chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.GOOGLE).install())
     request.cls.driver = webdriver.Chrome(service=chrome_service, options=opts)
